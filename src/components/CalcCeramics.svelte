@@ -1,0 +1,371 @@
+<script>
+    export let calcCeramics;
+
+    function closePopup() {
+		calcCeramics.isShow = false;
+	}
+
+    $: calcCeramics.dryWeight = (calcCeramics.producerWeight - (calcCeramics.humidity*calcCeramics.producerWeight/100)).toFixed(2);
+
+    $: calcCeramics.contentsPDgr = (1000*calcCeramics.dryWeight*calcCeramics.contentsPD/100).toFixed(2);
+    $: calcCeramics.contentsPTgr = (1000*calcCeramics.dryWeight*calcCeramics.contentsPT/100).toFixed(2);
+    $: calcCeramics.contentsRHgr = (1000*calcCeramics.dryWeight*calcCeramics.contentsRH/100).toFixed(2);
+    
+    $: calcCeramics.totalOneKG = (0.7*((1000*0.98*calcCeramics.contentsPD/100).toFixed(2)*calcCeramics.qotes[0].value + (1000*0.98*calcCeramics.contentsPT/100).toFixed(2)*calcCeramics.qotes[1].value + (1000*0.98*calcCeramics.contentsRH/100).toFixed(2)*calcCeramics.qotes[2].value)).toFixed(2);
+    
+    $: calcCeramics.totalPrice = (0.7*(calcCeramics.contentsPDgr*calcCeramics.qotes[0].value + calcCeramics.contentsPTgr*calcCeramics.qotes[1].value + calcCeramics.contentsRHgr*calcCeramics.qotes[2].value)).toFixed(2);
+    
+</script>
+
+<div class="glass" class:open={calcCeramics.isShow}>
+    <div class="popup">
+        <span class="close" on:click={closePopup}></span>
+        <div class="title">{calcCeramics.title}</div>
+        <div class="content">
+            <div class="line">
+                <div class="label">ПОСТАВЩИК</div>
+                <div class="inputBlock both">
+                    <div class="info left">@</div>
+                    <div class="info right"></div>
+                    <input class="input" type="text" placeholder="Ф.И.О" bind:value={calcCeramics.producer}  />
+                </div>
+            </div>
+            <div class="line">
+                <div class="label">МАССА<br> ПОСТАВЩИКА</div>
+                <div class="inputBlock right">
+                    <div class="info right">КГ</div>
+                    <input class="input right value" type="number" step="0.01" min="0" bind:value={calcCeramics.producerWeight} />
+                </div>
+            </div>
+            <div class="lines">
+                <div class="line">
+                    <div class="label">Влажность</div>
+                    <div class="inputBlock left">
+                        <div class="info left green">%</div>
+                        <input class="input value" type="number" step="0.01" min="0" bind:value={calcCeramics.humidity}  />
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="label right">Сухая<br> масса</div>
+                    <div class="inputBlock right">
+                        <div class="info right">КГ</div>
+                        <input class="input right value" type="number" step="0.01" min="0" readonly bind:value={calcCeramics.dryWeight} />
+                    </div>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="line top">
+                <div class="label">LME - ОСНОВНЫЕ ПОКАЗАТЕЛИ НА ДАТУ ФИКСАЦИИ</div>
+                <div class="inputBlocks">
+                    <div class="inputBlock both">
+                        <div class="info left">PD</div>
+                        <div class="info right">₽/гр</div>
+                        <input class="input right value" type="text" readonly value="{calcCeramics.qotes[0].value}" />
+                    </div>
+                    <div class="inputBlock both">
+                        <div class="info left">PT</div>
+                        <div class="info right">₽/гр</div>
+                        <input class="input right value" type="text" readonly value="{calcCeramics.qotes[1].value}" />
+                    </div>
+                    <div class="inputBlock both">
+                        <div class="info left">RH</div>
+                        <div class="info right">₽/гр</div>
+                        <input class="input right value" type="text" readonly value="{(calcCeramics.qotes[2].value-(calcCeramics.qotes[2].value*2/100)).toFixed(2)}" />
+                    </div>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="line top">
+                <div class="label">СОДЕРЖАНИЕ ПО РЕЗУЛЬТАТАМ СПЕКТРАЛЬНОГО АНАЛИЗА</div>
+                <div class="inputBlocks twolines">
+                    <div class="lines contents">
+                        <div class="line">
+                            <div class="inputBlock both">
+                                <div class="info left">PD</div>
+                                <div class="info right">%</div>
+                                <input class="input right value" type="number" step="0.001" min="0" bind:value={calcCeramics.contentsPD}  />
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="inputBlock right">
+                                <div class="info right">ГР</div>
+                                <input class="input right value" type="number" step="0.01" min="0" readonly bind:value={calcCeramics.contentsPDgr} />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lines">
+                        <div class="line">
+                            <div class="inputBlock both">
+                                <div class="info left">PT</div>
+                                <div class="info right">%</div>
+                                <input class="input right value" type="number" step="0.001" min="0" bind:value={calcCeramics.contentsPT}  />
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="inputBlock right">
+                                <div class="info right">ГР</div>
+                                <input class="input right value" type="number" step="0.01" min="0" readonly bind:value={calcCeramics.contentsPTgr} />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lines">
+                        <div class="line">
+                            <div class="inputBlock both">
+                                <div class="info left">RH</div>
+                                <div class="info right">%</div>
+                                <input class="input right value" type="number" step="0.001" min="0" bind:value={calcCeramics.contentsRH}  />
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="inputBlock right">
+                                <div class="info right">ГР</div>
+                                <input class="input right value" type="number" step="0.01" min="0" readonly bind:value={calcCeramics.contentsRHgr} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="line">
+                <div class="label">ИТОГО ЗА КГ</div>
+                <div class="inputBlock right">
+                    <div class="info right purple">₽</div>
+                    <input class="input right value" type="number" step="0.01" min="0" readonly bind:value={calcCeramics.totalOneKG} />
+                </div>
+            </div>
+            <div class="line">
+                <div class="label">ОБЩАЯ<br> СТОИМОСТЬ</div>
+                <div class="inputBlock right">
+                    <div class="info right purple">₽</div>
+                    <input class="input right value" type="number" step="0.01" min="0" readonly bind:value={calcCeramics.totalPrice} />
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="line">
+                <div class="label">МЕНЕДЖЕР</div>
+                <div class="inputBlock manager">
+                    <div class="order">ОТПРАВИТЬ</div>
+                    <input class="input" type="text" bind:value={calcCeramics.manager}  />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.glass{
+    position: fixed;
+    z-index: 110;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-image: url(/img/bg-calc.jpg);
+    background-repeat: repeat;
+}
+
+.glass.open{
+    display: flex;
+}
+
+.popup{
+    position: relative;
+    width: calc(100% - 40px);
+    max-width: 1000px;
+    max-height: calc(100vh - 60px);
+    background-color: #fff;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+
+.close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    background-image: url(/svg/close.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 20px 20px;
+    cursor: pointer;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    height: 80px;
+    font-size: 28px;
+    font-family: MyriadPro-Bold;
+    color: #464a53;
+    font-style: italic;
+    box-sizing: border-box;
+    padding: 0px 40px 0 40px;
+}
+
+.content{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 40px 40px 40px;
+    overflow-y: auto;
+    max-height: calc(100vh - 140px);
+}
+
+.lines{
+    display: flex;
+}
+
+.line{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.line.top{
+    align-items: flex-start;
+}
+
+.separator{
+    width: 100%;
+    height: 1px;
+    background-color: #dddfe1;
+    margin: 20px 0;
+}
+
+.label{
+    width: 200px;
+    min-width: 200px;
+    font-size: 20px;
+    color: #464a53;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    padding-right: 50px;
+}
+
+.label.right{
+    text-align: right;
+}
+
+.inputBlocks{
+    width: calc(100% - 200px); 
+}
+
+.inputBlock{
+    position: relative;
+    width: calc(100% - 200px);
+    height: 70px;
+    box-sizing: border-box;
+}
+
+.inputBlocks .inputBlock{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.inputBlocks .inputBlock:last-child{
+    margin-bottom: 0;
+}
+
+.info{
+    position: absolute;
+    top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    height: calc(100% - 2px);
+    background-color: #f0f0f2;
+    font-size: 20px;
+    box-sizing: border-box;
+    color: #abafb3;
+    text-transform: uppercase;
+}
+
+.info.green{
+    background-color: #31c96f;
+    color: #fff;
+}
+
+.info.purple{
+    background-color: #7f63f4;
+    color: #fff;
+}
+
+.info.right{
+    right: 1px;
+    border-left: 1px solid #dddfe1;
+}
+
+.info.left{
+    left: 1px;
+    border-right: 1px solid #dddfe1;
+}
+
+.input{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid #dddfe1;
+    font-size: 20px;
+    padding: 0 20px;
+    outline: none;
+}
+
+.input:focus{
+    border: 1px solid rgba(0,0,0,0.3);
+}
+
+.inputBlock.right .input{
+    padding-right: 85px;
+}
+
+.inputBlock.left .input{
+    padding-left: 85px;
+}
+
+.inputBlock.both .input{
+    padding: 0 85px;
+}
+
+.inputBlock.manager .input{
+    padding-right: 164px;
+}
+
+.input.right{
+    text-align: right;
+}
+
+.input.value{
+    font-size: 40px;
+}
+
+.lines.contents .line{
+    margin-top: 0;
+}
+
+.inputBlocks.twolines .lines .line:nth-child(2){
+    margin-left: 40px;
+}
+
+.order{
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 144px;
+    height: calc(100% - 2px);
+    background-color: #31c96f;
+    font-size: 20px;
+    box-sizing: border-box;
+    color: #fff;
+    text-transform: uppercase;
+    border-left: 1px solid #dddfe1;
+    cursor: pointer;
+}
+</style>

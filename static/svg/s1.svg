@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" viewBox="0 0 80 80">
+  <defs>
+    <style>
+      .cls-1 {
+        fill-rule: evenodd;
+        fill: url(#linear-gradient);
+        filter: url(#filter);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="1920" y1="3883.37" x2="0" y2="1863.63" gradientUnits="userSpaceOnUse">
+      <stop offset="0.38" stop-color="#ffc700"/>
+      <stop offset="0.62" stop-color="#ffa200"/>
+    </linearGradient>
+    <filter id="filter" x="375" y="2555" width="80" height="80" filterUnits="userSpaceOnUse">
+      <feImage preserveAspectRatio="none" x="375" y="2555" width="80" height="80" result="image" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgb3BhY2l0eTogMC40NTsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudCk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjgwIiB5MT0iNjguMDA4IiB4Mj0iMCIgeTI9IjExLjk5MiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9Ii0wLjI1IiBzdG9wLWNvbG9yPSIjZmMwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMS4yNSIgc3RvcC1jb2xvcj0iI2ZmOTMyNiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iODAiIGhlaWdodD0iODAiLz4KPC9zdmc+Cg=="/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path id="Forma_1" data-name="Forma 1" class="cls-1" d="M449.667,2635H380.333a5.334,5.334,0,0,1-5.333-5.33v-4a1.337,1.337,0,0,1,1.333-1.34h1.334v-48A5.334,5.334,0,0,1,383,2571h8v-10.67a5.334,5.334,0,0,1,5.333-5.33h37.334a5.334,5.334,0,0,1,5.333,5.33V2571h8a5.333,5.333,0,0,1,5.333,5.33v48h1.334a1.337,1.337,0,0,1,1.333,1.34v4A5.334,5.334,0,0,1,449.667,2635Zm-13.334-74.67a2.662,2.662,0,0,0-2.666-2.66H396.333a2.663,2.663,0,0,0-2.666,2.66v5.34h42.666v-5.34Zm0,8H393.667V2607a2.671,2.671,0,0,0,2.666,2.67h37.334a2.671,2.671,0,0,0,2.666-2.67v-38.67Zm-2.666,44H396.333A5.328,5.328,0,0,1,391,2607v-28h-5.333v37.33h58.666V2579H439v28A5.328,5.328,0,0,1,433.667,2612.33Zm16-36a2.663,2.663,0,0,0-2.667-2.66h-8v2.66h6.667a1.337,1.337,0,0,1,1.333,1.34v40a1.335,1.335,0,0,1-1.333,1.33H384.333a1.335,1.335,0,0,1-1.333-1.33v-40a1.337,1.337,0,0,1,1.333-1.34H391v-2.66h-8a2.663,2.663,0,0,0-2.667,2.66v48H403a1.334,1.334,0,0,1,.943.39l2.276,2.28h17.562l2.276-2.28a1.336,1.336,0,0,1,.943-0.39h22.667v-48Zm2.666,50.67H427.552l-2.276,2.28a1.333,1.333,0,0,1-.943.39H405.667a1.333,1.333,0,0,1-.943-0.39l-2.276-2.28H377.667v2.67a2.663,2.663,0,0,0,2.666,2.66h69.334a2.663,2.663,0,0,0,2.666-2.66V2627Zm-38.666-5.33h2.666v2.66h-2.666v-2.66Zm-16-24h34.666v2.66H397.667v-2.66Zm8-5.34h26.666V2595H405.667v-2.67Zm20.8-10.93-5.334,4-1.6-2.13,3.911-2.94-3.911-2.93,1.6-2.13,5.334,4a1.192,1.192,0,0,1,.266.26A1.337,1.337,0,0,1,426.467,2581.4Zm-15.372,5.11,5.335-13.34,2.476,1-5.335,13.33Zm-2.228-1.11-5.334-4a1.477,1.477,0,0,1-.266-0.27,1.325,1.325,0,0,1,.266-1.86l5.334-4,1.6,2.13-3.911,2.93,3.911,2.94Zm-8.534,6.93H403V2595h-2.667v-2.67Zm29.334,13.34h-32V2603h32v2.67ZM399,2563h-2.667v-2.67H399V2563Zm5.333,0h-2.666v-2.67h2.666V2563Zm5.334,0H407v-2.67h2.667V2563Z" transform="translate(-375 -2555)"/>
+</svg>

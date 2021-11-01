@@ -1,0 +1,64 @@
+@font-face {
+	font-family: MyriadPro-Regular;
+	src: url(fonts/MyriadPro-Regular.otf);
+	font-display: swap;
+}
+
+@font-face {
+	font-family: MyriadPro-Cond;
+	src: url(fonts/MyriadPro-Cond.otf);
+	font-display: swap;
+}
+
+@font-face {
+	font-family: MyriadPro-Bold;
+	src: url(fonts/MyriadPro-Bold.otf);
+	font-display: swap;
+}
+
+@font-face {
+	font-family: MyriadPro-Semibold;
+	src: url(fonts/MyriadPro-Semibold.otf);
+	font-display: swap;
+}
+
+@font-face {
+	font-family: SegoeScript-Regular;
+	src: url(fonts/SegoeScript/segoesc.ttf);
+	font-display: swap;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: MyriadPro-Regular, Helvetica Neue, sans-serif;
+	font-size: 14px;
+	color: #333;
+	padding-top: 100px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	line-height: 1em;
+}
+
+p{
+	margin: 15px 0;
+}
+
+.wrap{
+	position: relative;
+	float: left;
+	width: 100%;
+}
+
+.work{
+	margin: auto;
+	max-width: 1200px;
+}
+
+@media only screen and (max-width: 1240px){
+	.work{
+		max-width: calc(100% - 40px);
+	}
+}
