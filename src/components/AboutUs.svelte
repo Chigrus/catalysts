@@ -202,4 +202,10 @@
         margin: 15px 0 20px 0;
     }
 }
+
+@media only screen and (max-width: 375px){
+    .title{
+        font-size: 18px;
+    }
+}
 </style>
