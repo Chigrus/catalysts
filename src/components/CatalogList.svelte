@@ -80,4 +80,31 @@
         font-size: 28px;
     }
 }
+
+@media only screen and (max-width: 1023px){
+    .slide.active{
+        padding-top: 50px;
+        padding-bottom: 270px;
+        margin-top: 0;
+        box-shadow: none;
+    }
+}
+
+@media only screen and (max-width: 479px){
+    .slide{
+        padding-bottom: 200px;
+    }
+
+    .slide.active{
+        padding-bottom: 200px;
+    }
+
+    .price{
+        font-size: 44px;
+    }
+
+    .title{
+        font-size: 20px;
+    }
+}
 </style>

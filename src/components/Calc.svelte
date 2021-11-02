@@ -43,4 +43,10 @@
         font-size: 36px;
     }  
 }
+
+@media only screen and (max-width: 479px){
+    .title h2{
+        font-size: 28px;
+    }  
+}
 </style>

@@ -23,4 +23,16 @@
     margin: 0 7px;
     color: #515252;
 }
+
+@media only screen and (max-width: 375px){
+    .content{
+        flex-wrap: wrap;
+        padding: 20px 0;
+    }
+    .domain{
+        width: 100%;
+        margin: 5px 0;
+        text-align: center;
+    }   
+}
 </style>

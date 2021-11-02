@@ -373,5 +373,23 @@
         margin-left: 0;
         margin-bottom: 20px;
     }
+
+    .callContainer{
+        flex-wrap: wrap;
+        height: auto;
+        border-radius: 5px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .callTitle{
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .btnCall{
+        height: 40px;
+        padding: 0 20px;
+    }
 }
 </style>

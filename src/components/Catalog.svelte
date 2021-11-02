@@ -58,6 +58,8 @@
 .slider{
     position: relative;
     z-index: 1;
+    display: flex;
+    justify-content: center;
     float: left;
     width: 100%;
     margin-top: 10px;
@@ -92,6 +94,12 @@
     background-color: #ffbd0a;
 }
 
+@media only screen and (max-width: 1023px){
+    :global(.slider .carousel){
+        width: 400px !important
+    }
+}
+
 @media only screen and (max-width: 639px){
     .title h2{
         font-size: 36px;
@@ -101,6 +109,14 @@
 @media only screen and (max-width: 479px){
     .content{
         padding: 60px 0;
+    }
+
+    .title h2{
+        font-size: 28px;
+    }
+
+    :global(.slider .carousel){
+        width: 280px !important
     }
 }
 </style>

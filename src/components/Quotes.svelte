@@ -116,5 +116,9 @@
     .content{
         padding: 60px 0;
     }
+
+    .title{
+        font-size: 24px;
+    }
 }
 </style>

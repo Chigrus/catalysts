@@ -143,5 +143,9 @@
     .review:nth-child(3n+2){
         margin: 10px 0;
     }
+
+    .title h2{
+        font-size: 28px;
+    }
 }
 </style>

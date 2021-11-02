@@ -127,11 +127,11 @@ let footerabout = content.filter(dataline => dataline.category === 'footerabout'
 		<SubHeader {subheader} />
 	</div>
 </div>
-<div class="wrap">
+<!-- <div class="wrap">
 	<div class="work">
 		<Rotate />
 	</div>
-</div>
+</div> -->
 <div id="about" class="wrap wrap_about">
 	<div class="work">
 		<AboutUs {about} {aboutList} />
