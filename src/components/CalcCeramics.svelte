@@ -442,4 +442,15 @@
         margin-top: 15px;
     }
 }
+
+@media only screen and (max-width: 479px){
+    .input.value{
+        font-size: 30px;
+    }
+
+    .input{
+        font-size: 16px;
+        padding: 0 10px;
+    }
+}
 </style>
