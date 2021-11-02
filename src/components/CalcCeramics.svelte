@@ -368,4 +368,78 @@
     border-left: 1px solid #dddfe1;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 1023px){
+    .line{
+        flex-wrap: wrap;
+    }
+
+    .label{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .label br{
+        display: none;
+    }
+
+    .inputBlock{
+        width: 100%;
+    }
+
+    .inputBlocks{
+        width: 100%;
+    }
+
+    .lines .line:nth-child(2){
+        margin-left: 30px;
+    }
+
+    .label.right{
+        padding-right: 0;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .title{
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 639px){
+    .title{
+        font-size: 16px;
+        padding: 0px 40px 0 10px;
+    }
+
+    .content{
+        padding: 0px 10px 20px 10px;
+    }
+
+    .lines{
+        flex-wrap: wrap;
+    }
+
+    .lines .line{
+        width: 100%;
+    }
+
+    .lines .line:nth-child(2){
+        margin-left: 0;
+    }
+
+    .label{
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .label.right{
+        text-align: left;
+    }
+
+    .inputBlocks.twolines .lines .line:nth-child(2){
+        margin-left: 0;
+        margin-top: 15px;
+    }
+}
 </style>
