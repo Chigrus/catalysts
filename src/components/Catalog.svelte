@@ -91,4 +91,16 @@
     width: 40px;
     background-color: #ffbd0a;
 }
+
+@media only screen and (max-width: 639px){
+    .title h2{
+        font-size: 36px;
+    }
+}
+
+@media only screen and (max-width: 479px){
+    .content{
+        padding: 60px 0;
+    }
+}
 </style>

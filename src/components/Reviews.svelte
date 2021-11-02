@@ -122,4 +122,26 @@
         margin: 10px;
     }
 }
+
+@media only screen and (max-width: 639px){
+    .title h2{
+        font-size: 36px;
+    }
+    .review{
+        width: calc(100% - 20px);
+    } 
+}
+
+@media only screen and (max-width: 479px){
+    .content{
+        padding: 0 0 60px 0;
+    }
+    .review{
+        width: 100%;
+        margin: 10px 0;
+    }
+    .review:nth-child(3n+2){
+        margin: 10px 0;
+    }
+}
 </style>

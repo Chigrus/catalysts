@@ -143,4 +143,37 @@
         margin: 15px 0;
     }
 }
+
+@media only screen and (max-width: 639px){
+    .title{
+        width: 100%;
+    }
+    .title h2{
+        font-size: 26px;
+    }
+    .text{
+        width: 100%;
+        padding-left: 0;
+        margin-top: 25px;
+    }
+    .serviceTitle{
+        font-size: 18px;
+    }
+    .service{
+        padding-right: 20px;
+    }
+}
+
+@media only screen and (max-width: 479px){
+    .content{
+        padding: 60px 0;
+    }
+    .service{
+        width: 100%;
+        padding-right: 0;
+    }
+    :global(.serviceTitle br){
+        display: none;
+    }
+}
 </style>

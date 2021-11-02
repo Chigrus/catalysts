@@ -47,4 +47,23 @@
         margin-top: 50px;
     }
 }
+
+@media only screen and (max-width: 639px){
+    .title{
+        font-size: 26px;
+    }
+
+    .subtitle{
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 479px){
+    .content{
+        padding: 45px 0;
+    }
+    .title{
+        font-size: 20px;
+    }
+}
 </style>

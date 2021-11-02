@@ -354,4 +354,24 @@
         margin-top: 20px;
     }
 }
+
+@media only screen and (max-width: 767px){
+    .docs{
+        width: 100%;
+        margin-left: 0;
+        margin-top: 25px;
+    }
+}
+
+@media only screen and (max-width: 479px){
+    .content{
+        padding: 45px 0 45px 0;
+    }
+
+    .listBlock{
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+}
 </style>

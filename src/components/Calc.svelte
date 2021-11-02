@@ -37,4 +37,10 @@
     font-family: MyriadPro-Bold;
     text-transform: uppercase;
 }
+
+@media only screen and (max-width: 639px){
+    .title h2{
+        font-size: 36px;
+    }  
+}
 </style>

@@ -172,4 +172,34 @@
         font-size: 40px;
     }
 }
+
+@media only screen and (max-width: 639px){
+	.image{
+		width: calc(100% - 70px);
+	}
+}
+
+@media only screen and (max-width: 479px){
+    .content{
+        padding: 60px 0;
+    }
+    .image{
+		width: calc(100% - 40px);
+	}
+    .img_block::before{
+        right: -40px;
+        bottom: -20px;
+        width: 200px;
+        height: 164px;
+        background-size: contain;
+    }
+
+    .title{
+        font-size: 24px;
+    }
+
+    .list{
+        margin: 15px 0 20px 0;
+    }
+}
 </style>

@@ -127,11 +127,11 @@ let footerabout = content.filter(dataline => dataline.category === 'footerabout'
 		<SubHeader {subheader} />
 	</div>
 </div>
-<!-- <div class="wrap">
+<div class="wrap">
 	<div class="work">
 		<Rotate />
 	</div>
-</div> -->
+</div>
 <div id="about" class="wrap wrap_about">
 	<div class="work">
 		<AboutUs {about} {aboutList} />
@@ -180,29 +180,41 @@ let footerabout = content.filter(dataline => dataline.category === 'footerabout'
 </div>
 
 <style>
-	.wrap_header{
-		position: fixed;
-		z-index: 100;
-		top: 0;
-		left: 0;
-		background-color: #fff;
-		-webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.1);
-		-moz-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.1);
-		box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.1);
-	}
+.wrap_header{
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	background-color: #fff;
+	-webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.1);
+	-moz-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.1);
+	box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.1);
+}
+.header{
+	float: left;
+	width: 100%;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.wrap_about,
+.wrap_calc{
+	background-color: #f6f6f6;
+}
+.wrap_catalog{
+	background-color: #f6f6f6;
+}
+
+@media only screen and (max-width: 767px){
+    .navigation{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 479px){
 	.header{
-	   float: left;
-	   width: 100%;
-	   height: 100px;
-	   display: flex;
-	   align-items: center;
-	   justify-content: space-between;
+		height: 70px;
 	}
-	.wrap_about,
-	.wrap_calc{
-		background-color: #f6f6f6;
-	}
-	.wrap_catalog{
-		background-color: #f6f6f6;
-	}
+}
 </style>

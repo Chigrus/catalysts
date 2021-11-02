@@ -62,3 +62,9 @@ p{
 		max-width: calc(100% - 40px);
 	}
 }
+
+@media only screen and (max-width: 479px){
+	body {
+		padding-top: 70px;
+	}
+}

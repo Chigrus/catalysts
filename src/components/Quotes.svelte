@@ -100,4 +100,21 @@
         margin-top: 40px;
     }
 }
+
+@media only screen and (max-width: 767px){
+    .qotes{
+        flex-wrap: wrap;
+    }
+
+    .qote{
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media only screen and (max-width: 479px){
+    .content{
+        padding: 60px 0;
+    }
+}
 </style>

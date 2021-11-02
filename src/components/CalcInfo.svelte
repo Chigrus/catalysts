@@ -69,4 +69,16 @@
     font-family: MyriadPro-Bold;
     font-weight: normal;
 }
+
+@media only screen and (max-width: 479px){
+    .content{
+        padding-top: 0;
+    }
+    .title{
+        font-size: 24px;
+    }
+    .text{
+        font-size: 18px;
+    }
+}
 </style>

@@ -45,4 +45,14 @@
 .item:nth-child(3n+2){
    margin: 4px 8px;
 }
+
+@media only screen and (max-width: 767px){
+    .item{
+        margin: 4px;
+    }
+
+    .item:nth-child(3n+2){
+        margin: 4px;
+    }
+}
 </style>
