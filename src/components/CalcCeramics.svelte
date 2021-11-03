@@ -56,7 +56,7 @@
             <div class="separator"></div>
             <div class="line top">
                 <div class="label">LME - ОСНОВНЫЕ ПОКАЗАТЕЛИ НА ДАТУ ФИКСАЦИИ</div>
-                <div class="inputBlocks">
+                <div class="inputBlocks qotes">
                     <div class="inputBlock both">
                         <div class="info left">PD</div>
                         <div class="info right">₽/гр</div>
@@ -370,13 +370,33 @@
 }
 
 @media only screen and (max-width: 1023px){
+
+    .popup{
+        max-height: calc(100vh - 40px);
+    }
+
+    .close{
+        top: 15px;
+    }
+
+    .title{
+        font-size: 20px;
+        height: 40px;
+        padding: 10px 20px 0 20px;
+    }
+
+    .content{
+        padding: 0 20px 20px 20px;
+        max-height: calc(100vh - 80px);
+    }
     .line{
         flex-wrap: wrap;
+        margin-top: 10px;
     }
 
     .label{
         width: 100%;
-        margin-bottom: 10px;
+        font-size: 14px;
     }
 
     .label br{
@@ -385,10 +405,28 @@
 
     .inputBlock{
         width: 100%;
+        height: 40px;
     }
 
     .inputBlocks{
         width: 100%;
+    }
+
+    .inputBlocks.qotes{
+        display: flex;
+    }
+
+    .inputBlocks.qotes .inputBlock:nth-child(2),
+    .inputBlocks.qotes .inputBlock:nth-child(3){
+        margin-left: 20px;
+    }
+
+    .inputBlocks.qotes .inputBlock{
+        margin-bottom: 0;
+    }
+
+    .inputBlocks.qotes .inputBlock input{
+        font-size: 20px;
     }
 
     .lines .line:nth-child(2){
@@ -398,12 +436,35 @@
     .label.right{
         padding-right: 0;
     }
+
+    .info{
+        width: 40px;
+        font-size: 16px;
+    }
+
+    .inputBlock.both .input{
+        padding: 0 50px;
+    }
+
+    .inputBlock.left .input{
+        padding-left: 50px;
+    }
+
+    .inputBlock.right .input{
+        padding-right: 50px;
+    }
+
+    .input.value{
+        font-size: 24px;
+    }
+
+    .input{
+        padding: 0 10px;
+    }
 }
 
 @media only screen and (max-width: 767px){
-    .title{
-        font-size: 20px;
-    }
+
 }
 
 @media only screen and (max-width: 639px){
