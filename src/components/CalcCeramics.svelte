@@ -463,14 +463,22 @@
     }
 }
 
-@media only screen and (max-width: 767px){
+@media only screen and (max-width: 700px){
+    .inputBlocks.qotes{
+        display: block;
+    }
 
+    .inputBlocks.qotes .inputBlock:nth-child(2),
+    .inputBlocks.qotes .inputBlock:nth-child(3){
+        margin-left: 0;
+        margin-top: 10px;
+    }
 }
 
 @media only screen and (max-width: 639px){
     .title{
-        font-size: 16px;
-        padding: 0px 40px 0 10px;
+        padding: 10px 10px 0 10px;
+        font-size: 14px;
     }
 
     .content{
@@ -487,11 +495,6 @@
 
     .lines .line:nth-child(2){
         margin-left: 0;
-    }
-
-    .label{
-        font-size: 16px;
-        margin-bottom: 5px;
     }
 
     .label.right{
