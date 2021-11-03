@@ -17,7 +17,7 @@
     <div class="subtitle">{@html item.subtitle}</div>
     <div class="title"><h2>{@html item.title}</h2></div>
     {/each}
-    <div class="slider">
+    <div class="slider cat">
         <Carousel perPage={{ 1024: 3, 768: 1 }} loop={false} on:change="{ werwt }">
             <CatalogList {catalogList} {centerSlide} />
         </Carousel>
@@ -95,7 +95,7 @@
 }
 
 @media only screen and (max-width: 1023px){
-    :global(.slider .carousel){
+    :global(.slider.cat .carousel){
         width: 400px !important
     }
 }

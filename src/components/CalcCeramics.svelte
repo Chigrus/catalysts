@@ -11,9 +11,9 @@
     $: calcCeramics.contentsPTgr = (1000*calcCeramics.dryWeight*calcCeramics.contentsPT/100).toFixed(2);
     $: calcCeramics.contentsRHgr = (1000*calcCeramics.dryWeight*calcCeramics.contentsRH/100).toFixed(2);
     
-    $: calcCeramics.totalOneKG = (0.7*((1000*0.98*calcCeramics.contentsPD/100).toFixed(2)*calcCeramics.qotes[0].value + (1000*0.98*calcCeramics.contentsPT/100).toFixed(2)*calcCeramics.qotes[1].value + (1000*0.98*calcCeramics.contentsRH/100).toFixed(2)*calcCeramics.qotes[2].value)).toFixed(2);
+    $: calcCeramics.totalOneKG = (0.6*((1000*0.98*calcCeramics.contentsPD/100).toFixed(2)*calcCeramics.qotes[0].value + (1000*0.98*calcCeramics.contentsPT/100).toFixed(2)*calcCeramics.qotes[1].value + (1000*0.98*calcCeramics.contentsRH/100).toFixed(2)*calcCeramics.qotes[2].value)).toFixed(2);
     
-    $: calcCeramics.totalPrice = (0.7*(calcCeramics.contentsPDgr*calcCeramics.qotes[0].value + calcCeramics.contentsPTgr*calcCeramics.qotes[1].value + calcCeramics.contentsRHgr*calcCeramics.qotes[2].value)).toFixed(2);
+    $: calcCeramics.totalPrice = (0.6*(calcCeramics.contentsPDgr*calcCeramics.qotes[0].value + calcCeramics.contentsPTgr*calcCeramics.qotes[1].value + calcCeramics.contentsRHgr*calcCeramics.qotes[2].value)).toFixed(2);
     
 </script>
 
