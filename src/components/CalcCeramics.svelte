@@ -5,6 +5,14 @@
 		calcCeramics.isShow = false;
 	}
 
+    function clearCalc() {
+        calcCeramics.producer = '';
+        calcCeramics.producerWeight = 0;
+        calcCeramics.contentsPD = 0;
+        calcCeramics.contentsPT = 0;
+        calcCeramics.contentsRH = 0;
+	}
+
     $: calcCeramics.dryWeight = (calcCeramics.producerWeight - (calcCeramics.humidity*calcCeramics.producerWeight/100)).toFixed(2);
 
     $: calcCeramics.contentsPDgr = (1000*calcCeramics.dryWeight*calcCeramics.contentsPD/100).toFixed(2);
@@ -147,6 +155,7 @@
                     <div class="order">ОТПРАВИТЬ</div>
                     <input class="input" type="text" bind:value={calcCeramics.manager}  />
                 </div>
+                <div class="clear" on:click="{clearCalc}">C</div>
             </div>
         </div>
     </div>
@@ -369,6 +378,20 @@
     cursor: pointer;
 }
 
+.clear{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    margin-left: 10px;
+    font-size: 24px;
+    font-family: MyriadPro-Bold;
+    color: #fff;
+    cursor: pointer;
+    background-color: red;
+}
+
 @media only screen and (max-width: 1023px){
 
     .popup{
@@ -460,6 +483,15 @@
 
     .input{
         padding: 0 10px;
+    }
+
+    .inputBlock.manager{
+        width: calc(100% - 50px);
+    }
+
+    .clear{
+        width: 40px;
+        height: 40px;
     }
 }
 
