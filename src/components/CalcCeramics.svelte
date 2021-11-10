@@ -1,8 +1,96 @@
 <script>
     export let calcCeramics;
 
+    let errors = {
+        erProducer: false,
+        erProducerWeight: false,
+        erContentsPD: false,
+        erContentsPT: false,
+        erContentsRH: false,
+    };
+
+    let isShowSuccess = false;
+
     function closePopup() {
 		calcCeramics.isShow = false;
+	}
+
+    function closeCalc() {
+        isShowSuccess = false;
+		clearCalc();
+        closePopup();
+	}
+
+    function newCalc() {
+        isShowSuccess = false;
+		clearCalc();
+	}
+
+    function onProducer() {
+		errors.erProducer = false;
+	}
+
+    function onProducerWeight() {
+		errors.erProducerWeight = false;
+	}
+
+    function onContentsPD() {
+		errors.erContentsPD = false;
+	}
+
+    function onContentsPT() {
+		errors.erContentsPT = false;
+	}
+
+    function onContentsRH() {
+		errors.erContentsRH = false;
+	}
+
+    function sendData() {
+        //console.log(calcCeramics);
+        if (calcCeramics.producer === ''){
+            errors.erProducer = true;
+        }
+        if (calcCeramics.producerWeight === 0){
+            errors.erProducerWeight = true;
+        }
+        if (calcCeramics.contentsPD === 0){
+            errors.erContentsPD = true;
+        }
+        if (calcCeramics.contentsPT === 0){
+            errors.erContentsPT = true;
+        }
+        if (calcCeramics.contentsRH === 0){
+            errors.erContentsRH = true;
+        }
+        
+        let countErrors = 0;
+
+        for(var index in errors) { 
+            if (errors[index]){
+                countErrors++;
+            }
+        }
+
+        if (countErrors === 0){
+            fetch('/sendmessage', 
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        data: calcCeramics
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.status);
+                    if(data.status){
+                        isShowSuccess = true;
+                    }
+            });
+        }
 	}
 
     function clearCalc() {
@@ -11,6 +99,12 @@
         calcCeramics.contentsPD = 0;
         calcCeramics.contentsPT = 0;
         calcCeramics.contentsRH = 0;
+
+        errors.erProducer = false;
+        errors.erProducerWeight = false;
+        errors.erContentsPD = false;
+        errors.erContentsPT = false;
+        errors.erContentsRH = false;        
 	}
 
     $: calcCeramics.dryWeight = (calcCeramics.producerWeight - (calcCeramics.humidity*calcCeramics.producerWeight/100)).toFixed(2);
@@ -27,6 +121,17 @@
 
 <div class="glass" class:open={calcCeramics.isShow}>
     <div class="popup">
+        {#if isShowSuccess}
+        <div class="success">
+            <div class="message">
+                <div class="messageTitle">Ваш расчет успешно отправлен на почту</div>
+                <div class="messageLine">
+                    <div class="btnNext" on:click="{newCalc}">Новый расчет</div>
+                    <div class="btnStop" on:click="{closeCalc}">Закрыть</div>
+                </div>
+            </div>
+        </div>
+        {/if}
         <span class="close" on:click={closePopup}></span>
         <div class="title">{calcCeramics.title}</div>
         <div class="content">
@@ -35,14 +140,14 @@
                 <div class="inputBlock both">
                     <div class="info left">@</div>
                     <div class="info right"></div>
-                    <input class="input" type="text" placeholder="Ф.И.О" bind:value={calcCeramics.producer}  />
+                    <input class="{errors.erProducer ? 'input error' : 'input'}" type="text" placeholder="Ф.И.О" on:focus="{onProducer}" bind:value={calcCeramics.producer}  />
                 </div>
             </div>
             <div class="line">
                 <div class="label">МАССА<br> ПОСТАВЩИКА</div>
                 <div class="inputBlock right">
                     <div class="info right">КГ</div>
-                    <input class="input right value" type="number" step="0.01" min="0" bind:value={calcCeramics.producerWeight} />
+                    <input class="{errors.erProducerWeight ? 'input right value error' : 'input right value'}" type="number" step="0.01" min="0" on:focus="{onProducerWeight}" bind:value={calcCeramics.producerWeight} />
                 </div>
             </div>
             <div class="lines">
@@ -91,7 +196,7 @@
                             <div class="inputBlock both">
                                 <div class="info left">PD</div>
                                 <div class="info right">%</div>
-                                <input class="input right value" type="number" step="0.001" min="0" bind:value={calcCeramics.contentsPD}  />
+                                <input class="{errors.erContentsPD ? 'input right value error' : 'input right value'}" type="number" step="0.001" min="0" on:focus="{onContentsPD}" bind:value={calcCeramics.contentsPD}  />
                             </div>
                         </div>
                         <div class="line">
@@ -106,7 +211,7 @@
                             <div class="inputBlock both">
                                 <div class="info left">PT</div>
                                 <div class="info right">%</div>
-                                <input class="input right value" type="number" step="0.001" min="0" bind:value={calcCeramics.contentsPT}  />
+                                <input class="{errors.erContentsPT ? 'input right value error' : 'input right value'}" type="number" step="0.001" min="0" on:focus="{onContentsPT}" bind:value={calcCeramics.contentsPT}  />
                             </div>
                         </div>
                         <div class="line">
@@ -121,7 +226,7 @@
                             <div class="inputBlock both">
                                 <div class="info left">RH</div>
                                 <div class="info right">%</div>
-                                <input class="input right value" type="number" step="0.001" min="0" bind:value={calcCeramics.contentsRH}  />
+                                <input class="{errors.erContentsRH ? 'input right value error' : 'input right value'}" type="number" step="0.001" min="0" on:focus="{onContentsRH}" bind:value={calcCeramics.contentsRH}  />
                             </div>
                         </div>
                         <div class="line">
@@ -152,7 +257,7 @@
             <div class="line">
                 <div class="label">МЕНЕДЖЕР</div>
                 <div class="inputBlock manager">
-                    <div class="order">ОТПРАВИТЬ</div>
+                    <div class="order" on:click="{sendData}">ОТПРАВИТЬ</div>
                     <input class="input" type="text" bind:value={calcCeramics.manager}  />
                 </div>
                 <div class="clear" on:click="{clearCalc}">C</div>
@@ -188,6 +293,71 @@
     background-color: #fff;
     box-sizing: border-box;
     border-radius: 3px;
+}
+
+.success{
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.9);
+}
+
+.message{
+    width: calc(100% - 20px);
+    max-width: 420px;
+    box-sizing: border-box;
+    padding: 40px 20px;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 3px;
+}
+
+
+.messageTitle{
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    color: #31c96f;
+}
+
+.messageLine{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnNext{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 40px;
+    border: 1px solid rgba(0,0,0,0.3);
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #515253;
+    color: #ffca00;
+}
+
+.btnStop{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.3);
+    margin-left: 20px;
+    border-radius: 5px;
+    background-color: #515253;
+    color: #ffca00;
 }
 
 .close{
@@ -322,6 +492,10 @@
     font-size: 20px;
     padding: 0 20px;
     outline: none;
+}
+
+.input.error{
+    border: 1px solid red;
 }
 
 .input:focus{
