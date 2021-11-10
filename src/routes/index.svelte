@@ -4,26 +4,33 @@
 		const req2 = this.fetch('/menu.json').then(r => r.json())
 		const req3 = this.fetch('/general.json').then(r => r.json())
 		const req4 = this.fetch('/metalls.json').then(r => r.json())
+		const req5 = this.fetch('token').then(r => r.json())
 		return 	Promise.all([
-			req1, req2, req3, req4
+			req1, req2, req3, req4, req5
 		])
-		.then(([content, menu, general, metalls]) => {
-			return { content, menu, general, metalls };
+		.then(([content, menu, general, metalls, user]) => {
+			return { content, menu, general, metalls, user };
 		});
 	}
 </script>
 
 <script>
+import { isAdmin } from '../store.js';
+
 export let content;
 export let menu;
 export let general;
 export let metalls;
+export let user;
+
 export let logo = {	name: 'СПЛАВ-ЛД', subname: 'КАТАЛИЗАТОРЫ' };
 export let qotes = [
 	{ id: 1, title: 'ПАЛЛАДИЙ', value: metalls.PD },
 	{ id: 2, title: 'ПЛАТИНА', value: metalls.PT },
 	{ id: 3, title: 'РОДИЙ', value: metalls.RH }
 ];
+
+isAdmin.set(user.isAdmin);
 
 let calcCeramics = {
 	isShow: false,
@@ -113,7 +120,6 @@ let footerabout = content.filter(dataline => dataline.category === 'footerabout'
 </svelte:head>
 
 <CalcCeramics bind:calcCeramics={calcCeramics} />
-
 <div class="wrap wrap_header">
 	<div class="work">
 		<div class="header">

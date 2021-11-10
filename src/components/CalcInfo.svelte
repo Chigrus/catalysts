@@ -3,6 +3,7 @@
 
     import Carousel from '@beyonk/svelte-carousel';
     import { createEventDispatcher } from 'svelte';
+    import { isAdmin } from '../store.js';
 
     const dispatch = createEventDispatcher();
 </script>
@@ -14,7 +15,7 @@
                 <div class="block">
                     <div class="title">{@html item.title}</div>
                     <div class="text">{@html item.text}</div>
-                    {#if item.subtitle === 'calcCeramic'}
+                    {#if item.subtitle === 'calcCeramic' && $isAdmin}
                         <div class="btnCalcCeramic" on:click={() => dispatch('onCalcCeramic')}>КАЛЬКУЛЯТОР</div>
                     {/if}
                 </div>
