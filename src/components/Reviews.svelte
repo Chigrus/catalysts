@@ -24,7 +24,7 @@
 .content{
     float: left;
     width: 100%;
-    padding: 0 0 120px 0;
+    padding: 60px 0 120px 0;
 }
 
 .subtitle{
@@ -134,7 +134,7 @@
 
 @media only screen and (max-width: 479px){
     .content{
-        padding: 0 0 60px 0;
+        padding: 60px 0 60px 0;
     }
     .review{
         width: 100%;

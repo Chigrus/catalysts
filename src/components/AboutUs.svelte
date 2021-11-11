@@ -14,14 +14,16 @@
         <div class="subtitle">{item.subtitle}</div>
         <div class="title">{@html item.title}</div>
         <div class="text">{item.text}</div>
-        <ul class="list">
-            {#each aboutList as list}
-            <li class="item">{@html list.title}</li>
-            <li class="item">{@html list.subtitle}</li>
-            <li class="item">{@html list.text}</li>
-            {/each}
-        </ul>
-        <a href="tel:89283111110" class="call">Позвонить</a>
+        <div class="line">
+            <ul class="list">
+                {#each aboutList as list}
+                <li class="item">{@html list.title}</li>
+                <li class="item">{@html list.subtitle}</li>
+                <li class="item">{@html list.text}</li>
+                {/each}
+            </ul>
+            <a href="tel:89283111110" class="call">Позвонить</a>
+        </div>
     {/each}
     </div>
 </div>
@@ -162,6 +164,12 @@
 }
 
 @media only screen and (max-width: 1023px){
+
+    .content{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
     .info{
         width: 100%;
         padding-left: 0;
@@ -171,12 +179,41 @@
     .title{
         font-size: 40px;
     }
+
+    .line{
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    .list{
+        margin: 0;
+    }
+
+    .call{
+        font-size: 14px;
+        padding: 15px 25px;
+    }
 }
 
+@media only screen and (max-width: 740px){
+    .line{
+        flex-wrap: wrap;
+    } 
+
+    .list{
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
 @media only screen and (max-width: 639px){
 	.image{
 		width: calc(100% - 70px);
 	}
+
+    .img_block::before{
+        right: -50px;
+    }
 }
 
 @media only screen and (max-width: 479px){

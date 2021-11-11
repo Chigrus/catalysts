@@ -9,7 +9,7 @@
 </script>
 
 <div class="content">
-    <div class="slider">
+    <div class="slider calcSl">
         <Carousel perPage={{ 1200: 3, 768: 1 }}>
             {#each calcInfo as item}
                 <div class="block">
@@ -71,6 +71,33 @@
     font-weight: normal;
 }
 
+:global(.calcSl button.left){
+    top: 0;
+    left: 20px !important;
+    cursor: pointer;
+    transform: rotate(-90deg);
+    transform-origin: center center;
+    background-color: #ffc033;
+    background-image: url(/svg/arrow.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 30px 30px;
+}
+
+:global(.calcSl button.right){
+    top: 0;
+    cursor: pointer;
+    transform: rotate(90deg);
+    transform-origin: center center;
+    right: auto;
+    left: 80px;
+    background-color: #ffc033;
+    background-image: url(/svg/arrow.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 30px 30px;
+}
+
 @media only screen and (max-width: 479px){
     .content{
         padding-top: 0;
@@ -80,6 +107,19 @@
     }
     .text{
         font-size: 18px;
+    }
+
+    :global(.slider.calcSl){
+        margin-top: 40px;
+    }
+
+    :global(.slider.calcSl .carousel){
+        width: 100% !important;
+    }
+
+    :global(.calcSl button.right){
+        right: 0;
+        left: auto;
     }
 }
 </style>

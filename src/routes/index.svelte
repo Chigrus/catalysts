@@ -51,7 +51,9 @@ let calcCeramics = {
 	manager: 'Шило Виталий',
 }
 
-import Rotate from '../components/Rotate.svelte';
+let isMobileMenu = false;
+
+//import Rotate from '../components/Rotate.svelte';
 import Logo from '../components/Logo.svelte';
 import Nav from '../components/Nav.svelte';
 import SubHeader from '../components/SubHeader.svelte';
@@ -59,7 +61,7 @@ import AboutUs from '../components/AboutUs.svelte';
 import Calc from '../components/Calc.svelte';
 import CalcCeramics from '../components/CalcCeramics.svelte';
 import CalcInfo from '../components/CalcInfo.svelte';
-import CarService from '../components/CarService.svelte';
+//import CarService from '../components/CarService.svelte';
 import Reviews from '../components/Reviews.svelte';
 import Catalog from '../components/Catalog.svelte';
 import Quotes from '../components/Quotes.svelte';
@@ -69,44 +71,55 @@ import Footer from '../components/Footer.svelte';
 import { onMount } from 'svelte';
 
 onMount(async () => {
-	var options = {
-		root: document.querySelector('#scrollArea'),
-		rootMargin: '0px',
-		threshold: 1.0
+
+	if (window.matchMedia("(min-width: 640px)").matches) {
+		var options = {
+			root: document.querySelector('#scrollArea'),
+			rootMargin: '0px',
+			threshold: 1.0
+		}
+
+		var callback = function(entries, observer) {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					let ind = menu.findIndex(item => item.url === entry.target.id);
+					if(ind >= 0){
+						menu.forEach(function(item, i) { 
+							item.active = false; 
+						});
+						menu[ind].active = true;
+					}				
+				}
+			});
+		};
+
+		var observer = new IntersectionObserver(callback, options);
+
+		const targets = document.querySelectorAll('.wrap')
+		targets.forEach((target) => {
+			observer.observe(target);
+		})
 	}
-
-	var callback = function(entries, observer) {
-		entries.forEach(entry => {
-			if (entry.isIntersecting) {
-				let ind = menu.findIndex(item => item.url === entry.target.id);
-				if(ind >= 0){
-					menu.forEach(function(item, i) { 
-						item.active = false; 
-					});
-					menu[ind].active = true;
-				}				
-			}
-		});
-	};
-
-	var observer = new IntersectionObserver(callback, options);
-
-	const targets = document.querySelectorAll('.wrap')
-	targets.forEach((target) => {
-		observer.observe(target);
-	})
 });
 
 function onCalcCeramic(){
 	calcCeramics.isShow = true;
 }
 
+function openMobMenu(){
+	isMobileMenu = true;
+}
+
+function closeMobMenu(){
+	isMobileMenu = false;
+}
+
 let subheader = content.filter(dataline => dataline.category === 'header');
 let about = content.filter(dataline => dataline.category === 'about');
 let aboutList = content.filter(dataline => dataline.category === 'aboutList');
 let calcInfo = content.filter(dataline => dataline.category === 'calcinfo');
-let carService = content.filter(dataline => dataline.category === 'carService');
-let carServiceList = content.filter(dataline => dataline.category === 'carServiceList');
+//let carService = content.filter(dataline => dataline.category === 'carService');
+//let carServiceList = content.filter(dataline => dataline.category === 'carServiceList');
 let reviews = content.filter(dataline => dataline.category === 'reviews');
 let reviewsList = content.filter(dataline => dataline.category === 'reviewsList');
 let catalog = content.filter(dataline => dataline.category === 'catalog');
@@ -124,7 +137,11 @@ let footerabout = content.filter(dataline => dataline.category === 'footerabout'
 	<div class="work">
 		<div class="header">
 			<Logo {logo} />
-			<nav class="navigation"><Nav bind:menu /></nav>
+			<nav class="{isMobileMenu ? 'navigation open' : 'navigation'}">
+				<Nav bind:menu bind:isMobileMenu />
+				<span class="mobMenuClose" on:click="{closeMobMenu}"></span>
+			</nav>
+			<div class="mobMenuBtn" on:click="{openMobMenu}"></div>
 		</div>
 	</div>
 </div>
@@ -153,11 +170,11 @@ let footerabout = content.filter(dataline => dataline.category === 'footerabout'
 		<CalcInfo {calcInfo} on:onCalcCeramic={onCalcCeramic} />
 	</div>
 </div>
-<div id="catalog" class="wrap">
+<!-- <div id="catalog" class="wrap">
 	<div class="work">
 		<CarService {carService} {carServiceList} />
 	</div>
-</div>
+</div> -->
 <div id="blog" class="wrap">
 	<div class="work">
 		<Reviews {reviews} {reviewsList} />
@@ -212,10 +229,53 @@ let footerabout = content.filter(dataline => dataline.category === 'footerabout'
 	background-color: #f6f6f6;
 }
 
-@media only screen and (max-width: 767px){
+.mobMenuBtn{
+	display: none;
+}
+
+@media only screen and (max-width: 639px){
     .navigation{
-        display: none;
+        position: fixed;
+		z-index: 99999999999;
+		top: 0;
+		left: -100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(255,255,255,1);
+		transition-duration: 0.5s;
+		transition-property: left;    
+	}
+    .navigation.open{
+		left: 0;
+		transition-duration: 0.5s;
+		transition-property: left;
     }
+
+	.mobMenuBtn{
+		display: block;
+		width: 40px;
+		height: 40px;
+		background-image: url(/svg/menu.svg);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 32px 32px;
+	}
+
+	.mobMenuClose{
+		position: absolute;
+		top: 15px;
+		right: 20px;
+		display: block;
+		width: 40px;
+		height: 40px;
+		background-image: url(/svg/close.svg);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 25px 25px;
+	}
 }
 
 @media only screen and (max-width: 479px){
