@@ -25,7 +25,7 @@ export async function post(req, res) {
                     role: result[0].user_role
                 }, keys.jwt, {expiresIn: 3600 * 60 * 1});
                 res.cookie('token', token, {
-                    maxAge: 3600 * 4 * 1000,
+                    maxAge: 3600 * 9000 * 1000, //9000 немного больше чем 1 год
                     httpOnly: true,
                 })
                 res.json({

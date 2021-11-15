@@ -34,7 +34,7 @@ isAdmin.set(user.isAdmin);
 
 let calcCeramics = {
 	isShow: false,
-	title: 'КЕРАМИЧЕСКИЕ КАТАЛИЗАТОРЫ - Расчет',
+	title: '',
 	producer: '',
 	producerWeight: 0,
 	humidity: 1.8,
@@ -102,8 +102,10 @@ onMount(async () => {
 	}
 });
 
-function onCalcCeramic(){
+function onCalcCeramic(e){
+	//console.log(e.detail);
 	calcCeramics.isShow = true;
+	calcCeramics.title = e.detail.title;
 }
 
 function openMobMenu(){
@@ -133,6 +135,7 @@ let footerabout = content.filter(dataline => dataline.category === 'footerabout'
 </svelte:head>
 
 <CalcCeramics bind:calcCeramics={calcCeramics} />
+
 <div class="wrap wrap_header">
 	<div class="work">
 		<div class="header">
@@ -150,16 +153,6 @@ let footerabout = content.filter(dataline => dataline.category === 'footerabout'
 		<SubHeader {subheader} />
 	</div>
 </div>
-<!-- <div class="wrap">
-	<div class="work">
-		<Rotate />
-	</div>
-</div> -->
-<div id="about" class="wrap wrap_about">
-	<div class="work">
-		<AboutUs {about} {aboutList} />
-	</div>
-</div>
 <div id="calc" class="wrap wrap_calc">
 	<div class="work">
 		<Calc />
@@ -168,6 +161,16 @@ let footerabout = content.filter(dataline => dataline.category === 'footerabout'
 <div class="wrap wrap_calc">
 	<div class="work">
 		<CalcInfo {calcInfo} on:onCalcCeramic={onCalcCeramic} />
+	</div>
+</div>
+<!-- <div class="wrap">
+	<div class="work">
+		<Rotate />
+	</div>
+</div> -->
+<div id="about" class="wrap wrap_about">
+	<div class="work">
+		<AboutUs {about} {aboutList} />
 	</div>
 </div>
 <!-- <div id="catalog" class="wrap">
@@ -221,8 +224,7 @@ let footerabout = content.filter(dataline => dataline.category === 'footerabout'
 	align-items: center;
 	justify-content: space-between;
 }
-.wrap_about,
-.wrap_calc{
+.wrap_about{
 	background-color: #f6f6f6;
 }
 .wrap_catalog{

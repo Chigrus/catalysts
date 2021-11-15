@@ -5,7 +5,7 @@
 <div class="content">
     {#each subheader as item}
         <div class="title">{item.title}</div>
-        <div class="subtitle">{item.subtitle}</div>
+        <!-- <div class="subtitle">{item.subtitle}</div> -->
     {/each}
 </div>
 
@@ -17,7 +17,7 @@
     justify-content: center;
     flex-wrap: wrap;
     box-sizing: border-box;
-    padding: 90px 0;
+    padding: 90px 0 0 0;
 }
 
 .title{
@@ -29,23 +29,23 @@
     letter-spacing: 3px;
 }
 
-.subtitle{
+/* .subtitle{
     width: 100%;
     text-align: center;
     margin-top: 75px;
     font-size: 16px;
     color: #ffb50f;
 	font-family: MyriadPro-Semibold;
-}
+} */
 
 @media only screen and (max-width: 1023px){
     .title{
         font-size: 36px;
     }
 
-    .subtitle{
+    /* .subtitle{
         margin-top: 50px;
-    }
+    } */
 }
 
 @media only screen and (max-width: 639px){
@@ -53,9 +53,9 @@
         font-size: 26px;
     }
 
-    .subtitle{
+    /* .subtitle{
         margin-top: 30px;
-    }
+    } */
 }
 
 @media only screen and (max-width: 479px){

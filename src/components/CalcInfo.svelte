@@ -1,7 +1,6 @@
 <script>
     export let calcInfo;
 
-    import Carousel from '@beyonk/svelte-carousel';
     import { createEventDispatcher } from 'svelte';
     import { isAdmin } from '../store.js';
 
@@ -9,18 +8,19 @@
 </script>
 
 <div class="content">
-    <div class="slider calcSl">
-        <Carousel perPage={{ 1200: 3, 768: 1 }}>
-            {#each calcInfo as item}
-                <div class="block">
-                    <div class="title">{@html item.title}</div>
-                    <div class="text">{@html item.text}</div>
-                    {#if item.subtitle === 'calcCeramic' && $isAdmin}
-                        <div class="btnCalcCeramic" on:click={() => dispatch('onCalcCeramic')}>КАЛЬКУЛЯТОР</div>
-                    {/if}
-                </div>
-            {/each}
-        </Carousel>
+    <div class="calcs">
+        {#each calcInfo as item}
+            <div class="block">
+                <div class="title">{@html item.title}</div>
+                <div class="text">{@html item.text}</div>
+                {#if item.subtitle === 'calcCeramic' && $isAdmin}
+                    <div class="btnCalcCeramic" on:click={() => dispatch('onCalcCeramic', {title: 'КЕРАМИЧЕСКИЕ КАТАЛИЗАТОРЫ'})}>КАЛЬКУЛЯТОР</div>
+                {/if}
+                {#if item.subtitle === 'calcFilters' && $isAdmin}
+                    <div class="btnCalcCeramic" on:click={() => dispatch('onCalcCeramic', {title: 'САЖЕВЫЕ ФИЛЬТРЫ'})}>КАЛЬКУЛЯТОР</div>
+                {/if}
+            </div>
+        {/each}
     </div>
 </div>
 <style>
@@ -30,8 +30,14 @@
     padding: 45px 0;
 }
 
-.block{
+.calcs{
+    float: left;
     width: 100%;
+    display: flex;   
+}
+
+.block{
+    width: calc(100%/3);
     box-sizing: border-box;
     padding: 0 20px;
 }
@@ -71,31 +77,17 @@
     font-weight: normal;
 }
 
-:global(.calcSl button.left){
-    top: 0;
-    left: 20px !important;
-    cursor: pointer;
-    transform: rotate(-90deg);
-    transform-origin: center center;
-    background-color: #ffc033;
-    background-image: url(/svg/arrow.svg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 30px 30px;
-}
 
-:global(.calcSl button.right){
-    top: 0;
-    cursor: pointer;
-    transform: rotate(90deg);
-    transform-origin: center center;
-    right: auto;
-    left: 80px;
-    background-color: #ffc033;
-    background-image: url(/svg/arrow.svg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: 30px 30px;
+@media only screen and (max-width: 1023px){
+
+    .calcs{
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+    .block{
+        width: 100%;
+        margin: 20px 0;
+    }
 }
 
 @media only screen and (max-width: 479px){
@@ -107,19 +99,6 @@
     }
     .text{
         font-size: 18px;
-    }
-
-    :global(.slider.calcSl){
-        margin-top: 40px;
-    }
-
-    :global(.slider.calcSl .carousel){
-        width: 100% !important;
-    }
-
-    :global(.calcSl button.right){
-        right: 0;
-        left: auto;
     }
 }
 </style>

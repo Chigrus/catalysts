@@ -11,6 +11,7 @@
 .content{
     float: left;
     width: 100%;
+    padding: 60px 0 0 0;
 }
 
 .subtitle{

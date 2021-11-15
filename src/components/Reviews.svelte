@@ -9,11 +9,12 @@
         <div class="title"><h2>{@html item.title}</h2></div>
     {/each}
     <div class="reviewList">
-        {#each reviewsList as review, index}
+        {#each reviewsList.slice(0, 2) as review, index}
             <div class="review">{review.image}</div>
             {#if index == 0}
                 <div class="review info">
-                    <div class="reviewInfoTitle">Видео отзывы<br> <span>Более 100 отзывов</span></div>
+                    <!-- <div class="reviewInfoTitle">Видео отзывы<br> <span>Более 100 отзывов</span></div> -->
+                    <div class="reviewInfoTitle">Видео отзывы</div>
                 </div>
             {/if}
         {/each}
@@ -96,9 +97,9 @@
     line-height: 1em;
 }
 
-.reviewInfoTitle span{
+/* .reviewInfoTitle span{
     font-size: 14px;
-}
+} */
 
 .reviewInfoTitle::before{
     content: '';

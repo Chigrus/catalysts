@@ -12,6 +12,7 @@
     let isShowSuccess = false;
 
     function closePopup() {
+        clearCalc();
 		calcCeramics.isShow = false;
 	}
 
@@ -34,17 +35,17 @@
 		errors.erProducerWeight = false;
 	}
 
-    function onContentsPD() {
-		errors.erContentsPD = false;
-	}
+    // function onContentsPD() {
+	// 	errors.erContentsPD = false;
+	// }
 
-    function onContentsPT() {
-		errors.erContentsPT = false;
-	}
+    // function onContentsPT() {
+	// 	errors.erContentsPT = false;
+	// }
 
-    function onContentsRH() {
-		errors.erContentsRH = false;
-	}
+    // function onContentsRH() {
+	// 	errors.erContentsRH = false;
+	// }
 
     function sendData() {
         //console.log(calcCeramics);
@@ -54,15 +55,15 @@
         if (calcCeramics.producerWeight === 0){
             errors.erProducerWeight = true;
         }
-        if (calcCeramics.contentsPD === 0){
-            errors.erContentsPD = true;
-        }
-        if (calcCeramics.contentsPT === 0){
-            errors.erContentsPT = true;
-        }
-        if (calcCeramics.contentsRH === 0){
-            errors.erContentsRH = true;
-        }
+        // if (calcCeramics.contentsPD === 0){
+        //     errors.erContentsPD = true;
+        // }
+        // if (calcCeramics.contentsPT === 0){
+        //     errors.erContentsPT = true;
+        // }
+        // if (calcCeramics.contentsRH === 0){
+        //     errors.erContentsRH = true;
+        // }
         
         let countErrors = 0;
 
@@ -133,7 +134,7 @@
         </div>
         {/if}
         <span class="close" on:click={closePopup}></span>
-        <div class="title">{calcCeramics.title}</div>
+        <div class="title">{calcCeramics.title}  - Расчет</div>
         <div class="content">
             <div class="line">
                 <div class="label">ПОСТАВЩИК</div>
@@ -196,7 +197,7 @@
                             <div class="inputBlock both">
                                 <div class="info left">PD</div>
                                 <div class="info right">%</div>
-                                <input class="{errors.erContentsPD ? 'input right value error' : 'input right value'}" type="number" step="0.001" min="0" on:focus="{onContentsPD}" bind:value={calcCeramics.contentsPD}  />
+                                <input class="{errors.erContentsPD ? 'input right value error' : 'input right value'}" type="number" step="0.001" min="0" bind:value={calcCeramics.contentsPD}  />
                             </div>
                         </div>
                         <div class="line">
@@ -211,7 +212,7 @@
                             <div class="inputBlock both">
                                 <div class="info left">PT</div>
                                 <div class="info right">%</div>
-                                <input class="{errors.erContentsPT ? 'input right value error' : 'input right value'}" type="number" step="0.001" min="0" on:focus="{onContentsPT}" bind:value={calcCeramics.contentsPT}  />
+                                <input class="{errors.erContentsPT ? 'input right value error' : 'input right value'}" type="number" step="0.001" min="0" bind:value={calcCeramics.contentsPT}  />
                             </div>
                         </div>
                         <div class="line">
@@ -226,7 +227,7 @@
                             <div class="inputBlock both">
                                 <div class="info left">RH</div>
                                 <div class="info right">%</div>
-                                <input class="{errors.erContentsRH ? 'input right value error' : 'input right value'}" type="number" step="0.001" min="0" on:focus="{onContentsRH}" bind:value={calcCeramics.contentsRH}  />
+                                <input class="{errors.erContentsRH ? 'input right value error' : 'input right value'}" type="number" step="0.001" min="0" bind:value={calcCeramics.contentsRH}  />
                             </div>
                         </div>
                         <div class="line">
@@ -566,7 +567,7 @@
     background-color: red;
 }
 
-@media only screen and (max-width: 1023px){
+@media only screen and (max-width: 5000px){
 
     .popup{
         max-height: calc(100vh - 40px);

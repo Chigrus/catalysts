@@ -275,14 +275,21 @@
     font-size: 0;
 }
 
+.socItem.google .socLink{
+    background-image: url(/svg/google-plus.svg);
+    background-size: 25px auto;
+}
+
 .socItem.instagram .socLink{
     background-image: url(/svg/instagram.svg);
 }
 .socItem.yandex .socLink{
     background-image: url(/svg/yandex.svg);
+    background-size: 9px auto;
 }
 .socItem.youtube .socLink{
     background-image: url(/svg/youtube.svg);
+    background-size: 36px auto;
 }
 
 .callContainer{
