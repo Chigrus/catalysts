@@ -52,7 +52,7 @@ export default {
 				exclude: ['node_modules/@babel/**'],
 				presets: [
 					['@babel/preset-env', {
-						targets: '> 0.25%, safari10'
+						targets: '> 0.25%, iOS 10'
 					}]
 				],
 				plugins: [
