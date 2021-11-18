@@ -9,14 +9,19 @@
         <div class="title"><h2>{@html item.title}</h2></div>
     {/each}
     <div class="reviewList">
-        {#each reviewsList.slice(0, 2) as review, index}
-            <div class="review">{review.image}</div>
-            {#if index == 0}
+        {#each reviewsList.slice(0, 3) as review, index}
+            <div class="review">
+                <div>
+                    <div class="name">{review.title}</div>
+                    <div class="text">{review.text}</div>
+                </div>
+            </div>
+            <!--{#if index == 0}
                 <div class="review info">
-                    <!-- <div class="reviewInfoTitle">Видео отзывы<br> <span>Более 100 отзывов</span></div> -->
+                    <div class="reviewInfoTitle">Видео отзывы<br> <span>Более 100 отзывов</span></div>
                     <div class="reviewInfoTitle">Видео отзывы</div>
                 </div>
-            {/if}
+            {/if}-->
         {/each}
     </div>
 </div>
@@ -63,15 +68,32 @@
 
 .review{
     display: flex;
+    flex-wrap: wrap;
     width: calc(100%/3 - 20px);
-    height: 250px;
+    /* height: 250px; */
+    height: auto;
     background-color: #f6f6f6;
     border-radius: 2px;
     overflow: hidden;
     margin: 15px 0;
+    box-sizing: border-box;
+    padding: 40px 30px;
 }
 
-.review.info{
+.name{
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+}
+
+.text{
+    width: 100%;
+    line-height: 1.5em;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+/* .review.info{
     align-items: center;
     background-color: #ffca00;
     background-image: url(/svg/bird.svg);
@@ -82,26 +104,26 @@
     -webkit-box-shadow: 0px 0px 40px 0px rgba(50, 50, 50, 0.15);
     -moz-box-shadow: 0px 0px 40px 0px rgba(50, 50, 50, 0.15);
     box-shadow: 0px 0px 40px 0px rgba(50, 50, 50, 0.15);
-}
+} */
 
 .review:nth-child(3n+2){
     margin: 15px 30px;
 }
 
-.reviewInfoTitle{
+/* .reviewInfoTitle{
     position: relative;
     font-size: 24px;
     color: #fff;
     font-family: MyriadPro-Bold;
     padding-top: 100px;
     line-height: 1em;
-}
+} */
 
 /* .reviewInfoTitle span{
     font-size: 14px;
 } */
 
-.reviewInfoTitle::before{
+/* .reviewInfoTitle::before{
     content: '';
     position: absolute;
     top: 0;
@@ -111,7 +133,7 @@
     background-image: url(/svg/video.svg);
     background-repeat: no-repeat;
     background-position: 0 0;
-}
+} */
 
 @media only screen and (max-width: 1023px){
     .review{
