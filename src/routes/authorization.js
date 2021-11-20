@@ -15,7 +15,7 @@ export async function post(req, res) {
       if (err) console.log(err);
       if(result.length === 0){
             res.json({
-                message: 'Такого пользователя нет'
+                message: 'errorLogin'
             })
         }
         else{
@@ -33,7 +33,7 @@ export async function post(req, res) {
                 })
             } else{
                 res.json({
-                    message: 'Введен неверный пароль'
+                    message: 'errorPass'
                 })
             }
         }

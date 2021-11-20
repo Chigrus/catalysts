@@ -9,7 +9,8 @@
             value: '',
             class: 'input',
             error: false,
-            erEmpty: { isShow: false, title: 'Введите логин' }
+            erEmpty: { isShow: false, title: 'Введите логин' },
+            erLogin: { isShow: false, title: 'Такого пользователя не существует' }
         },
         {
             name: 'password',
@@ -18,12 +19,13 @@
             value: '',
             class: 'input',
             error: false,
-            erEmpty: { isShow: false, title: 'Введите пароль' }
+            erEmpty: { isShow: false, title: 'Введите пароль' },
+            erLogin: { isShow: false, title: 'Введен неверный пароль' }
         }
     ]
 
     function authorization(){
-        console.log(111);
+        //console.log(111);
         let erCount = 0;
         data.forEach(function(item, i){
             if (item.value == '') {
@@ -51,9 +53,16 @@
                 })
             })
             .then(response => response.json())
-            .then(data => {
-                //console.log(data);
-                goto('/');              
+            .then(responsData => {
+                if(responsData.message == 'errorLogin'){
+                    data[0].erLogin.isShow = true;
+                    data[0].error = true;
+                }else if(responsData.message == 'errorPass'){
+                    data[1].erLogin.isShow = true;
+                    data[1].error = true;
+                }else{
+                    goto('/');
+                }                 
             });
         }
     }
@@ -61,6 +70,7 @@
     function onFocus(i){
         data[i].error = false;
         data[i].erEmpty.isShow = false;
+        data[i].erLogin.isShow = false;
     }
 
 </script>
@@ -74,13 +84,13 @@
         {#each data as line, i}
             {#if line.type == 'text'}
                 <div class="lineForm">
-                    <span class="titleError">{line.erEmpty.isShow ? line.erEmpty.title : ''}</span>
+                    <span class="titleError">{line.erEmpty.isShow ? line.erEmpty.title : ''}{line.erLogin.isShow ? line.erLogin.title : ''}</span>
                     <input class="{line.class}" class:error={line.error} bind:value="{line.value}" on:focus={() => onFocus(i)} placeholder="{line.placeholder}" type="text" />
                 </div>
             {/if}
             {#if line.type == 'password'}
                 <div class="lineForm">
-                    <span class="titleError">{line.erEmpty.isShow ? line.erEmpty.title : ''}</span>
+                    <span class="titleError">{line.erEmpty.isShow ? line.erEmpty.title : ''}{line.erLogin.isShow ? line.erLogin.title : ''}</span>
                     <input class="{line.class}" class:error={line.error} bind:value="{line.value}" on:focus={() => onFocus(i)} placeholder="{line.placeholder}" type="password" />
                 </div>
             {/if}
