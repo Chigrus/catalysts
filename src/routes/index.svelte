@@ -4,7 +4,7 @@
 		const req2 = this.fetch('/menu.json').then(r => r.json())
 		const req3 = this.fetch('/general.json').then(r => r.json())
 		const req4 = this.fetch('/metalls.json').then(r => r.json())
-		const req5 = this.fetch('token').then(r => r.json())
+		const req5 = this.fetch('/token.json').then(r => r.json())
 		return 	Promise.all([
 			req1, req2, req3, req4, req5
 		])
