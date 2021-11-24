@@ -219,7 +219,7 @@ let footerabout = content.filter(dataline => dataline.category === 'footerabout'
 .header{
 	float: left;
 	width: 100%;
-	height: 100px;
+	height: 70px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -282,7 +282,7 @@ let footerabout = content.filter(dataline => dataline.category === 'footerabout'
 
 @media only screen and (max-width: 479px){
 	.header{
-		height: 70px;
+		height: 60px;
 	}
 }
 </style>

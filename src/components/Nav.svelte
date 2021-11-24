@@ -1,7 +1,19 @@
 <script>
     import * as animateScroll from "svelte-scrollto";
+    import { onMount } from 'svelte';
+
     export let menu;
     export let isMobileMenu;
+
+    let ofsetValue;
+
+    onMount(async () => {
+        if (window.matchMedia("(min-width: 480px)").matches) {
+            ofsetValue = 70; 
+        }else{
+            ofsetValue = 60;
+        }
+    });
 
     function menuClick(id, url){
         menu.forEach(function(item, i) { 
@@ -9,7 +21,7 @@
         });
         menu[id-1].active = true;
 
-        animateScroll.scrollTo({element: '#'+url, offset: -100});
+        animateScroll.scrollTo({element: '#'+url, offset: -ofsetValue});
 
         isMobileMenu = false;
     }

@@ -10,21 +10,21 @@
 <style>
 .logo{
     position: relative;
-    padding-left: 50px;
+    padding-left: 44px;
     background-image: url(/svg/logo.svg);
     background-repeat: no-repeat;
-    background-position: left center;
-    background-size: contain;
+    background-position: top left;
+    background-size: 34px auto;
 }
 
 .name{
-    font-size: 30px;
+    font-size: 24px;
     color: #515253;
     line-height: 1em;
 }
 
 .subname{
-    font-size: 16px;
+    font-size: 14px;
     color: #636465;
     font-family: MyriadPro-Cond;
     letter-spacing: 5px;
