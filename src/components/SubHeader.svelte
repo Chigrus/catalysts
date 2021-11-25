@@ -1,10 +1,21 @@
 <script>
+    import BtnEdit from '../components/BtnEdit.svelte';
+
     export let subheader;
 </script>
 
 <div class="content">
     {#each subheader as item}
-        <div class="title">{item.title}</div>
+        <div class="title">
+            {item.title}
+            <BtnEdit
+                on:getData
+                dataEdit={item} 
+                fields={[
+                    {field: 'title', type: 'input'},
+                ]} 
+            />
+        </div>
         <!-- <div class="subtitle">{item.subtitle}</div> -->
     {/each}
 </div>
@@ -21,6 +32,7 @@
 }
 
 .title{
+    position: relative;
     width: 100%;
     max-width: 720px;
     text-align: center;

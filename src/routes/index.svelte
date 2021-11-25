@@ -15,6 +15,7 @@
 </script>
 
 <script>
+import PopupEditContent from '../components/PopupEditContent.svelte';	
 import { isAdmin } from '../store.js';
 
 export let content;
@@ -116,23 +117,41 @@ function closeMobMenu(){
 	isMobileMenu = false;
 }
 
-let subheader = content.filter(dataline => dataline.category === 'header');
-let about = content.filter(dataline => dataline.category === 'about');
-let aboutList = content.filter(dataline => dataline.category === 'aboutList');
-let calcInfo = content.filter(dataline => dataline.category === 'calcinfo');
-//let carService = content.filter(dataline => dataline.category === 'carService');
-//let carServiceList = content.filter(dataline => dataline.category === 'carServiceList');
-let reviews = content.filter(dataline => dataline.category === 'reviews');
-let reviewsList = content.filter(dataline => dataline.category === 'reviewsList');
-let catalog = content.filter(dataline => dataline.category === 'catalog');
-let catalogList = content.filter(dataline => dataline.category === 'catalogList');
-let footerabout = content.filter(dataline => dataline.category === 'footerabout');
+$: subheader = content.filter(dataline => dataline.category === 'header');
+$: about = content.filter(dataline => dataline.category === 'about');
+$: aboutList = content.filter(dataline => dataline.category === 'aboutList');
+$: calcInfo = content.filter(dataline => dataline.category === 'calcinfo');
+//$: carService = content.filter(dataline => dataline.category === 'carService');
+//$: carServiceList = content.filter(dataline => dataline.category === 'carServiceList');
+$: reviews = content.filter(dataline => dataline.category === 'reviews');
+$: reviewsList = content.filter(dataline => dataline.category === 'reviewsList');
+$: catalog = content.filter(dataline => dataline.category === 'catalog');
+$: catalogList = content.filter(dataline => dataline.category === 'catalogList');
+$: footerabout = content.filter(dataline => dataline.category === 'footerabout');
+
+let masspopup = {
+	popup: false,
+	fields: [],
+	data: []
+};
+
+let id;
 </script>
 
 <svelte:head>
 	<title>Прием катализаторов дорого, выезд - бесплатно</title>
 	<meta name="description" content="Прием катализаторов дорого, выезд - бесплатн" />
 </svelte:head>
+
+{#if masspopup.popup}
+	<PopupEditContent 
+		bind:content={masspopup} 
+		on:updateData={(event) => { 
+			id = event.detail;
+			content[content.forEach(function(post, i){if(post.id === id.id){return i}})] = masspopup.data;
+	 	}}
+	/>
+{/if}
 
 <CalcCeramics bind:calcCeramics={calcCeramics} />
 
@@ -150,7 +169,7 @@ let footerabout = content.filter(dataline => dataline.category === 'footerabout'
 </div>
 <div id="home" class="wrap">
 	<div class="work">
-		<SubHeader {subheader} />
+		<SubHeader {subheader} on:getData={(event) => { masspopup = event.detail; }} />
 	</div>
 </div>
 <div id="calc" class="wrap wrap_calc">
