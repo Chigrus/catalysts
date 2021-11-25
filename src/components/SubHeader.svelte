@@ -1,5 +1,6 @@
 <script>
     import BtnEdit from '../components/BtnEdit.svelte';
+    import { isEditor } from '../store.js';
 
     export let subheader;
 </script>
@@ -8,6 +9,7 @@
     {#each subheader as item}
         <div class="title">
             {item.title}
+            {#if $isEditor}
             <BtnEdit
                 on:getData
                 dataEdit={item} 
@@ -15,6 +17,7 @@
                     {field: 'title', type: 'input'},
                 ]} 
             />
+            {/if}
         </div>
         <!-- <div class="subtitle">{item.subtitle}</div> -->
     {/each}

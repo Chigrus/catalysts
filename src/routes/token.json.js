@@ -6,12 +6,16 @@ export async function get(req, res){
 
     const user = {
         isAdmin: false,
+        isEditor: false,
     };
 
     if(req.headers.cookie) {
         const {token} = get_cookies(req);
         if(token && jwt.verify(token, keys.jwt).role == 'admin') {
             user.isAdmin = true;
+        }
+        if(token && jwt.verify(token, keys.jwt).role == 'editor') {
+            user.isEditor = true;
         }
     }
 

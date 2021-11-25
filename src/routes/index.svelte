@@ -17,6 +17,7 @@
 <script>
 import PopupEditContent from '../components/PopupEditContent.svelte';	
 import { isAdmin } from '../store.js';
+import { isEditor } from '../store.js';
 
 export let content;
 export let menu;
@@ -32,6 +33,7 @@ export let qotes = [
 ];
 
 isAdmin.set(user.isAdmin);
+isEditor.set(user.isEditor);
 
 let calcCeramics = {
 	isShow: false,
