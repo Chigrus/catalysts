@@ -181,7 +181,7 @@ let id;
 </div>
 <div class="wrap wrap_calc">
 	<div class="work">
-		<CalcInfo {calcInfo} on:onCalcCeramic={onCalcCeramic} />
+		<CalcInfo {calcInfo} on:onCalcCeramic={onCalcCeramic} {subheader} on:getData={(event) => { masspopup = event.detail; }} />
 	</div>
 </div>
 <!-- <div class="wrap">

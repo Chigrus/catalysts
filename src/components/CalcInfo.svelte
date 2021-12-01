@@ -4,6 +4,9 @@
     import { createEventDispatcher } from 'svelte';
     import { isAdmin } from '../store.js';
 
+    import BtnEdit from '../components/BtnEdit.svelte';
+    import { isEditor } from '../store.js';
+
     const dispatch = createEventDispatcher();
 </script>
 
@@ -11,6 +14,16 @@
     <div class="calcs">
         {#each calcInfo as item}
             <div class="block">
+                {#if $isEditor}
+                <BtnEdit
+                    on:getData
+                    dataEdit={item} 
+                    fields={[
+                        {field: 'title', type: 'input'},
+                        {field: 'text', type: 'input'},
+                    ]} 
+                />
+                {/if}
                 <div class="title">{@html item.title}</div>
                 <div class="text">{@html item.text}</div>
                 {#if item.subtitle === 'calcCeramic' && $isAdmin}
@@ -37,9 +50,14 @@
 }
 
 .block{
+    position: relative;
     width: calc(100%/3);
     box-sizing: border-box;
     padding: 0 20px;
+}
+
+:global(.block .edit){
+    right: 0 !important;
 }
 
 .title{
