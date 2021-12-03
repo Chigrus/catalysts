@@ -22,7 +22,7 @@
                 <li class="item">{@html list.text}</li>
                 {/each}
             </ul>
-            <a href="tel:89283111110" class="call">Позвонить</a>
+            <a href="tel:89886785297" class="call">Позвонить</a>
         </div>
     {/each}
     </div>

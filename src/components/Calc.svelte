@@ -5,7 +5,7 @@
 
 <div class="content">
    <div class="subtitle">Сделаем расчёт</div>
-   <div class="title"><a href="tel:89283111110" class="call">Связаться с менеджером по закупкам</a></div>
+   <div class="title"><a href="tel:89886785297" class="call">Связаться с менеджером по закупкам</a></div>
 </div>
 <style>
 .content{

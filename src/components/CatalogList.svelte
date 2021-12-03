@@ -27,7 +27,7 @@
     background-size: cover;
 }
 
-.slide::before{
+/* .slide::before{
     content: '';
     position: absolute;
     top: 0;
@@ -36,7 +36,7 @@
     height: 100%;
     border-radius: 5px;
     background-color: rgba(255,255,255,0.5);
-}
+} */
 
 .slide.active{
     padding-top: 70px;
@@ -92,11 +92,11 @@
 
 @media only screen and (max-width: 479px){
     .slide{
-        padding-bottom: 200px;
+        padding-bottom: 300px;
     }
 
     .slide.active{
-        padding-bottom: 200px;
+        padding-bottom: 300px;
     }
 
     .price{

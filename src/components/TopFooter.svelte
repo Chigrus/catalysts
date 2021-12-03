@@ -98,7 +98,7 @@
             </div>
             <div class="callContainer">
                 <div class="callTitle">Ежедневно с 9 до 16 часов</div>
-                <a href="tel:89283111110" class="btnCall">Позвонить</a>
+                <a href="tel:89886785297" class="btnCall">Позвонить</a>
             </div>    
         </div>
     </div>
