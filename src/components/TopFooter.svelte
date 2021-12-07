@@ -88,10 +88,10 @@
                 <h3>Мы в соцсетях</h3>
             </div>
             <ul class="socList">
-                <li class="socItem google"><a class="socLink" href="{general[0].google}">{general[0].google}</a></li>
-                <li class="socItem yandex"><a class="socLink" href="{general[0].yandex}">{general[0].yandex}</a></li>
-                <li class="socItem instagram"><a class="socLink" href="{general[0].instagram}">{general[0].instagram}</a></li>
-                <li class="socItem youtube"><a class="socLink" href="{general[0].youtube}">{general[0].youtube}</a></li>
+                <li class="socItem google"><a class="socLink" target="_blank" href="{general[0].google}">{general[0].google}</a></li>
+                <li class="socItem yandex"><a class="socLink" target="_blank" href="{general[0].yandex}">{general[0].yandex}</a></li>
+                <li class="socItem instagram"><a class="socLink" target="_blank" href="{general[0].instagram}">{general[0].instagram}</a></li>
+                <li class="socItem youtube"><a class="socLink" target="_blank" href="{general[0].youtube}">{general[0].youtube}</a></li>
             </ul>
         </div>
         <div class="call">
