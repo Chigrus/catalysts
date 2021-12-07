@@ -1,6 +1,7 @@
 <script>
     export let about;
     export let aboutList;
+    export let general;
 </script>
 
 <div class="content">
@@ -22,7 +23,7 @@
                 <li class="item">{@html list.text}</li>
                 {/each}
             </ul>
-            <a href="tel:89886785297" class="call">Позвонить</a>
+            <a href="tel:{general[0].phone}" class="call">Позвонить</a>
         </div>
     {/each}
     </div>

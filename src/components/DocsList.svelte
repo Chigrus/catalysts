@@ -32,7 +32,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 90% 90%;
-    margin: 4px 0;
+    margin: 0 4px 8px 4px;
     cursor: pointer;
 }
 
@@ -42,17 +42,4 @@
     box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.1);
 }
 
-.item:nth-child(3n+2){
-   margin: 4px 8px;
-}
-
-@media only screen and (max-width: 767px){
-    .item{
-        margin: 4px;
-    }
-
-    .item:nth-child(3n+2){
-        margin: 4px;
-    }
-}
 </style>

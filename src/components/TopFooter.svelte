@@ -1,11 +1,11 @@
 <script>
     import { scrollto } from "svelte-scrollto";
-    import Logo from '../components/Logo.svelte';
+    //import Logo from '../components/Logo.svelte';
     import LightBox from '../components/LightBox.svelte';
     import DocsList from '../components/DocsList.svelte';
 
-    export let logo;
-    export let footerabout;
+    //export let logo;
+    //export let footerabout;
     export let menu;
     export let general;
 
@@ -38,10 +38,10 @@
 
 <div class="content">
     <div class="topLine">
-        <div class="about">
+        <!-- <div class="about">
             <div class="titleBlock"><Logo {logo} /></div>
             <div class="text">{@html footerabout[0].text}</div>
-        </div>
+        </div> -->
         <div class="right">
             <div class="listBlock">
                 <div class="titleBlock">
@@ -64,7 +64,9 @@
                     </div>
                     <div class="contactLine">
                         <h4 class="contactTitle">Телефон:</h4>
-                        <div class="contactText">{general[0].phone}</div>
+                        <a href="tel:{general[0].phone}" class="contactText">
+                            +7 ({general[0].phone.slice(1,4)}) {general[0].phone.slice(4,7)} {general[0].phone.slice(7,9)} {general[0].phone.slice(9,11)}
+                        </a>
                     </div>
                     <div class="contactLine">
                         <h4 class="contactTitle">E-mail:</h4>
@@ -98,7 +100,7 @@
             </div>
             <div class="callContainer">
                 <div class="callTitle">Ежедневно с 9 до 16 часов</div>
-                <a href="tel:89886785297" class="btnCall">Позвонить</a>
+                <a href="tel:{general[0].phone}" class="btnCall">Позвонить</a>
             </div>    
         </div>
     </div>
@@ -122,14 +124,15 @@
     margin-top: 30px;
 }
 
-.about{
+/* .about{
     float: left;
     width: 330px;
     margin-right: 60px;
-}
+} */
 
 .right{
     float: right;
+    width: 100%;
 }
 
 .titleBlock{
@@ -145,19 +148,19 @@
     color: #515252;
 }
 
-.text{
+/* .text{
     float: left;
     width: 100%;
     color: #333333;
     font-size: 17px;
     line-height: 1.5em;
     margin-top: 15px;
-}
+} */
 
 .listBlock{
     float: left;
     width: 200px;
-    margin-left: 35px;
+    margin-right: 35px;
 }
 
 .list{
@@ -197,8 +200,8 @@
 
 .docs{
     float: left;
-    width: 256px;
-    margin-left: 35px;
+    width: calc(100% - 470px);
+    max-width: 500px;
 }
 
 .social{
@@ -247,6 +250,8 @@
     width: 100%;
     line-height: 1.2em;
     margin-top: 10px;
+    text-decoration: none;
+    color: #333;
 }
 
 .socList{
@@ -326,10 +331,10 @@
 }
 
 @media only screen and (max-width: 1199px){
-    .about{
+    /* .about{
         width: 100%;
         margin-right: 0;
-    }
+    } */
 
     .right{
         float: left;

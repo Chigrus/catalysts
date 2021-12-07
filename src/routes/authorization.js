@@ -23,7 +23,7 @@ export async function post(req, res) {
                 const token = jwt.sign({
                     id: result[0].ID,
                     role: result[0].user_role
-                }, keys.jwt, {expiresIn: 3600 * 60 * 1});
+                }, keys.jwt, {expiresIn: 3600 * 9000 * 1000});
                 res.cookie('token', token, {
                     maxAge: 3600 * 9000 * 1000, //9000 немного больше чем 1 год
                     httpOnly: true,

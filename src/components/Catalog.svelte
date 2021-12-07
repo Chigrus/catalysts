@@ -1,15 +1,8 @@
 <script>
     export let catalog;
     export let catalogList;
-    export let centerSlide = 1;
-    let curentSlide = 0;
     import Carousel from '@beyonk/svelte-carousel';
     import CatalogList from '../components/CatalogList.svelte';
-
-    function werwt(slide){
-        curentSlide = slide.detail.currentSlide;
-        centerSlide = curentSlide+1;
-    }
 </script>
 
 <div class="content">
@@ -18,8 +11,8 @@
     <div class="title"><h2>{@html item.title}</h2></div>
     {/each}
     <div class="slider cat">
-        <Carousel perPage={{ 1024: 3, 768: 1 }} loop={false} on:change="{ werwt }">
-            <CatalogList {catalogList} {centerSlide} />
+        <Carousel perPage={{ 1024: 3, 768: 1 }} loop={false}>
+            <CatalogList {catalogList} />
         </Carousel>
     </div>
 </div>

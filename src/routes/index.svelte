@@ -191,7 +191,7 @@ let id;
 </div> -->
 <div id="about" class="wrap wrap_about">
 	<div class="work">
-		<AboutUs {about} {aboutList} />
+		<AboutUs {about} {aboutList} {general} />
 	</div>
 </div>
 <!-- <div id="catalog" class="wrap">
