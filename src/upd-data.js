@@ -51,8 +51,8 @@ const fetchData = () => {
                 global.METALLS_DATA = result.split('\n')
                     .map(line => line.trim().split(','))
                     .reduce((acc, line) => {
-                        if (line.length < 5) { return acc }
-                        acc[line[0]] = line[4];
+                        if (line.length < 6) { return acc }
+                        acc[line[0]] = line[5];
                         return acc;
                     }, {});
                 setTimeout(fetchData, getTimeUntilNextMidnight());

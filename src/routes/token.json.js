@@ -11,11 +11,15 @@ export async function get(req, res){
 
     if(req.headers.cookie) {
         const {token} = get_cookies(req);
-        if(token && jwt.verify(token, keys.jwt).role == 'admin') {
-            user.isAdmin = true;
-        }
-        if(token && jwt.verify(token, keys.jwt).role == 'editor') {
-            user.isEditor = true;
+        if(token){
+            switch (jwt.verify(token, keys.jwt).role) {
+                case 'admin':
+                    user.isAdmin = true;
+                    break;
+                case 'editor':
+                    user.isEditor = true;
+                    break;
+              }
         }
     }
 
