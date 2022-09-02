@@ -134,7 +134,8 @@
         </div>
         {/if}
         <span class="close" on:click={closePopup}></span>
-        <div class="title">{calcCeramics.title}  - Расчет {calcCeramics.percent_factory}</div>
+        <!-- <div class="title">{calcCeramics.title}  - Расчет {calcCeramics.percent_factory}</div> -->
+        <div class="title">{calcCeramics.title}  - Расчет</div>
         <div class="content">
             <div class="line">
                 <div class="label">ПОСТАВЩИК</div>
