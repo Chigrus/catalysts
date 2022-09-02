@@ -38,6 +38,8 @@ isEditor.set(user.isEditor);
 let calcCeramics = {
 	isShow: false,
 	title: '',
+	percent_factory: '',
+	percent_profit: '',
 	producer: '',
 	producerWeight: 0,
 	humidity: 1.8,
@@ -109,6 +111,8 @@ function onCalcCeramic(e){
 	//console.log(e.detail);
 	calcCeramics.isShow = true;
 	calcCeramics.title = e.detail.title;
+	calcCeramics.percent_factory = e.detail.percent_factory;
+	calcCeramics.percent_profit = e.detail.percent_profit;
 }
 
 function openMobMenu(){
@@ -144,6 +148,10 @@ let id;
 	<title>Прием катализаторов дорого, выезд - бесплатно</title>
 	<meta name="description" content="Прием катализаторов дорого, выезд - бесплатн" />
 </svelte:head>
+
+{#if $isEditor}
+	<div class="edit_general">11111</div>
+{/if}
 
 {#if masspopup.popup}
 	<PopupEditContent 
@@ -181,7 +189,7 @@ let id;
 </div>
 <div class="wrap wrap_calc">
 	<div class="work">
-		<CalcInfo {calcInfo} on:onCalcCeramic={onCalcCeramic} {subheader} on:getData={(event) => { masspopup = event.detail; }} />
+		<CalcInfo {calcInfo} {general} on:onCalcCeramic={onCalcCeramic} {subheader} on:getData={(event) => { masspopup = event.detail; }} />
 	</div>
 </div>
 <!-- <div class="wrap">

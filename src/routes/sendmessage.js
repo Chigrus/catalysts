@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer')
 
 export async function post(req, res) {
     const {manager, producer, producerWeight, humidity, dryWeight, qotes, contentsPD, contentsPT, contentsRH, contentsPDgr, contentsPTgr, contentsRHgr, totalOneKG, totalPrice} = req.body.data;
-
+    console.log(process.env.MAIL_LOGIN, process.env.MAIL_PASS);
     let transporter = nodemailer.createTransport({
         host: 'smtp.yandex.ru',
         port: 465,

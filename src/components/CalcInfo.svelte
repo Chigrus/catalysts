@@ -1,5 +1,6 @@
 <script>
     export let calcInfo;
+    export let general;
 
     import { createEventDispatcher } from 'svelte';
     import { isAdmin } from '../store.js';
@@ -27,10 +28,10 @@
                 <div class="title">{@html item.title}</div>
                 <div class="text">{@html item.text}</div>
                 {#if item.subtitle === 'calcCeramic' && $isAdmin}
-                    <div class="btnCalcCeramic" on:click={() => dispatch('onCalcCeramic', {title: 'КЕРАМИЧЕСКИЕ КАТАЛИЗАТОРЫ'})}>КАЛЬКУЛЯТОР</div>
+                    <div class="btnCalcCeramic" on:click={() => dispatch('onCalcCeramic', {title: 'КЕРАМИЧЕСКИЕ КАТАЛИЗАТОРЫ', percent_factory: general[0].percent_factory, percent_profit: general[0].percent_profit})}>КАЛЬКУЛЯТОР</div>
                 {/if}
                 {#if item.subtitle === 'calcFilters' && $isAdmin}
-                    <div class="btnCalcCeramic" on:click={() => dispatch('onCalcCeramic', {title: 'САЖЕВЫЕ ФИЛЬТРЫ'})}>КАЛЬКУЛЯТОР</div>
+                    <div class="btnCalcCeramic" on:click={() => dispatch('onCalcCeramic', {title: 'САЖЕВЫЕ ФИЛЬТРЫ', percent_factory: general[0].percent_factory, percent_profit: general[0].percent_profit})}>КАЛЬКУЛЯТОР</div>
                 {/if}
             </div>
         {/each}
